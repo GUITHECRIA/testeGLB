@@ -3,36 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo 3D em AR</title>
+    <title>Alimentos em AR</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #2c3e50;
+            transition: color 0.3s ease-in-out;
+        }
+
+        h1:hover {
+            color: #16a085;
+        }
+
+        .section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #16a085;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .section h2:hover {
+            color: #2c3e50;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .text-content {
+            flex: 1;
+            min-width: 250px;
+            color: #4a4c4d;
+        }
+
+        .model-container {
+            flex: 1;
+            min-width: 250px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
         }
+
         model-viewer {
             width: 100%;
-            max-width: 600px;
-            height: 500px;
+            max-width: 400px;
+            height: 400px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        model-viewer:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        /* Popup styling */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: none;
+        }
+
+        .popup p {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #16a085;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .popup button:hover {
+            background-color: #149174;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Model Viewer para visualizar o modelo 3D em AR -->
-    <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
-                  alt="Modelo 3D" ar ar-modes="webxr scene-viewer quick-look"
-                  ar-placement="floor"
-                  environment-image="neutral"
-                  auto-rotate camera-controls>
-    </model-viewer>
+    <h1>ALIMENTOS</h1>
 
-    <p style="text-align: center;">Escaneie com um dispositivo compatível para visualizar em AR.</p>
+    <!-- Seção de alimentos energéticos -->
+    <div class="section">
+        <h2>Alimentos Energéticos</h2>
+        <div class="content">
+            <div class="text-content">
+                <h3>Funções</h3>
+                <ul>
+                    <li>Fornecem energia: Esses alimentos são a principal fonte de calorias, essenciais para todas as atividades do corpo, desde as mais simples até as mais intensas.</li>
+                    <li>Estocagem de energia: Os carboidratos podem ser armazenados como glicogênio, sendo utilizados conforme necessário durante atividades físicas.</li>
+                    <li>Aumentam a performance: A energia proveniente dos carboidratos é rapidamente acessível, fundamental durante exercícios.</li>
+                </ul>
+                <h3>Exemplos</h3>
+                <ul>
+                    <li>Carboidratos: Pão, arroz, massas, batatas.</li>
+                    <li>Açúcares refinados: Doces, refrigerantes, produtos de panificação.</li>
+                </ul>
+            </div>
+            <div class="model-container">
+                <model-viewer src="ImageToStl.com_multi_grain_bread.glb" 
+                              alt="Pão Multigrãos" ar ar-modes="webxr scene-viewer quick-look"
+                              ar-placement="floor"
+                              environment-image="neutral"
+                              auto-rotate camera-controls>
+                </model-viewer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de alimentos construtores -->
+    <div class="section">
+        <h2>Alimentos Construtores</h2>
+        <div class="content">
+            <div class="text-content">
+                <h3>Funções</h3>
+                <ul>
+                    <li>Construção e reparação de tecidos: As proteínas são essenciais para o crescimento e manutenção de músculos, pele e órgãos.</li>
+                    <li>Produção de enzimas e hormônios: Muitas enzimas e hormônios são proteínas, que facilitam reações químicas e regulam processos no corpo.</li>
+                    <li>Suporte ao sistema imunológico: As proteínas ajudam na produção de anticorpos, combatendo infecções.</li>
+                </ul>
+                <h3>Exemplos</h3>
+                <ul>
+                    <li>Fontes de proteínas animais: Carnes (frango, carne bovina), peixes, ovos, laticínios (leite, queijo, iogurte).</li>
+                    <li>Fontes de proteínas vegetais: Leguminosas (feijão, lentilha), nozes, sementes.</li>
+                </ul>
+            </div>
+            <div class="model-container">
+                <model-viewer src="ImageToStl.com_cooked_steak_t-bone__v1_l3.123cd8e4e25e-3f4c-4b36-9c36-4de720111560.glb" 
+                              alt="Bife T-Bone" ar ar-modes="webxr scene-viewer quick-look"
+                              ar-placement="floor"
+                              environment-image="neutral"
+                              auto-rotate camera-controls>
+                </model-viewer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de alimentos reguladores -->
+    <div class="section">
+        <h2>Alimentos Reguladores</h2>
+        <div class="content">
+            <div class="text-content">
+                <h3>Funções</h3>
+                <ul>
+                    <li>Regulação de funções corporais: Ricos em vitaminas e minerais, esses alimentos ajudam na digestão e na absorção de nutrientes.</li>
+                    <li>Antioxidantes: Muitos vegetais e frutas contêm antioxidantes que protegem as células.</li>
+                    <li>Apoio ao sistema imunológico: Fortalecem o sistema imunológico e ajudam a prevenir doenças.</li>
+                </ul>
+                <h3>Exemplos</h3>
+                <ul>
+                    <li>Frutas: Laranja, kiwi, morango, maçã, pera, uva.</li>
+                    <li>Vegetais: Milho, abobora, cenoura, tomate.</li>
+                    <li>Ervas e especiarias: Alho, gengibre, cúrcuma.</li>
+                </ul>
+            </div>
+            <div class="model-container">
+                <model-viewer src="ImageToStl.com_cornucopia_basket_with_food_v2_l1.123c26e34152-69e1-4c4b-882c-169e14190727.glb" 
+                              alt="Cornucópia de Alimentos" ar ar-modes="webxr scene-viewer quick-look"
+                              ar-placement="floor"
+                              environment-image="neutral"
+                              auto-rotate camera-controls>
+                </model-viewer>
+            </div>
+        </div>
+    </div>
+
+    <p>Escaneie com um dispositivo compatível para visualizar em AR.</p>
+
+    <!-- Popup message -->
+    <div class="popup" id="popup">
+        <p>Toque no botão no canto inferior da imagem para visualizar em 3D.</p>
+        <button onclick="closePopup()">Fechar</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        // Function to show the popup
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Show the popup after a delay
+        window.onload = function() {
+            setTimeout(showPopup, 2000);
+        }
+    </script>
 
 </body>
 </html>
