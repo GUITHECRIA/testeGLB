@@ -164,15 +164,20 @@
                               alt="Pão Multigrãos" ar ar-modes="webxr scene-viewer quick-look"
                               ar-placement="floor"
                               environment-image="neutral"
-                              auto-rotate camera-controls>
+                              auto-rotate camera-controls
+                              >
                 </model-viewer>
-            </div><h2>Molécula de Glicose</h2>
-        </div><br>       <model-viewer src="Glorious Bombul.glb" 
-                              alt="Pão Multigrãos" ar ar-modes="webxr scene-viewer quick-look"
-                              ar-placement="floor"
-                              environment-image="neutral"
-                              auto-rotate camera-controls>
-                </model-viewer>
+            </div>
+            <h2>Molécula de Glicose</h2>
+        </div>
+        <br>
+        <model-viewer src="Glorious Bombul.glb" 
+                      alt="Molécula de Glicose" ar ar-modes="webxr scene-viewer quick-look"
+                      ar-placement="floor"
+                      environment-image="neutral"
+                      auto-rotate camera-controls
+                      scale="0.01 0.01 0.01">
+        </model-viewer>
     </div>
 
     <!-- Seção de alimentos construtores -->
@@ -197,7 +202,8 @@
                               alt="Bife T-Bone" ar ar-modes="webxr scene-viewer quick-look"
                               ar-placement="floor"
                               environment-image="neutral"
-                              auto-rotate camera-controls>
+                              auto-rotate camera-controls
+                              scale="0.01 0.01 0.01">
                 </model-viewer>
             </div>
         </div>
@@ -223,42 +229,36 @@
             </div>
             <div class="model-container">
                 <model-viewer src="frutas-reguladoras (1).glb" 
-                              alt="Cornucópia de Alimentos" ar ar-modes="webxr scene-viewer quick-look"
+                              alt="Frutas Mistas" ar ar-modes="webxr scene-viewer quick-look"
                               ar-placement="floor"
                               environment-image="neutral"
-                              auto-rotate camera-controls>
+                              auto-rotate camera-controls
+                              scale="0.01 0.01 0.01">
                 </model-viewer>
             </div>
         </div>
     </div>
 
-    <p>Escaneie com um dispositivo compatível para visualizar em AR.</p>
-
-    <!-- Popup message -->
+    <!-- Popup para mensagem -->
     <div class="popup" id="popup">
-        <p>Toque no botão no canto inferior da imagem para visualizar em 3D.</p>
+        <p>Mensagem do popup</p>
         <button onclick="closePopup()">Fechar</button>
     </div>
     <div class="overlay" id="overlay"></div>
 
     <script>
-        // Function to show the popup
-        function showPopup() {
+        function openPopup() {
             document.getElementById('popup').style.display = 'block';
             document.getElementById('overlay').style.display = 'block';
         }
 
-        // Function to close the popup
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
         }
 
-        // Show the popup after a delay
-        window.onload = function() {
-            setTimeout(showPopup, 2000);
-        }
+        // Exemplo de abertura de popup após 3 segundos
+        setTimeout(openPopup, 3000);
     </script>
-
 </body>
 </html>
